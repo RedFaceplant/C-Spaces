@@ -1,3 +1,13 @@
 body{
     font-family: "sans-serif";
 }
+
+a.huge{
+    height: 300px;
+    width: 300px;
+    vertical-align: middle;
+}
+
+div.bg-slate{
+    background-color: slategray;
+}
