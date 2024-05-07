@@ -3,11 +3,17 @@
 
 const MessageBar = document.getElementById("messageBar")
 
-// Reset Message bar
+// Reset Message bar whenever the page is refreshed
 MessageBar.value = ""
 
-// Placeholder function that just dumps to console
+// This function runs when the send button is pressed
 function sendButton(){
-    console.log(MessageBar.value)
+    const message = {
+        "from": "admin",
+        "room": "room1",
+        "body": MessageBar.value,
+    }
+    console.log(message)
+
     MessageBar.value = ""
 }
