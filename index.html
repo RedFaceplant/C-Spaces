@@ -9,22 +9,54 @@
 <body>
     <!-- Nav Bar -->
     <nav class="navbar navbar-light bg-primary">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" onclick="goHome()">
         <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
         C Spaces
         </a>
     </nav>
 
     <!-- Landing body -->
-    <div class="d-flex align-items-center flex-column" style="height: 200px;">
-        <div class="mt-auto p-5">
-            <h1>C SPACES</h1>
-        </div>
-        <div class="p-5">
-            <a class="btn btn-primary btn-lg huge" href="chatRoom.html" role="button"> Room 1 </a>
-            <a class="btn btn-primary btn-lg huge" href="chatRoom.html" role="button"> Room 2 </a>
+    <div id="landingBody">
+        <div class="d-flex align-items-center flex-column" style="height: 200px;">
+            <div class="mt-auto p-5">
+                <h1>C SPACES</h1>
+            </div>
+            <div  class="mt-auto p-7">
+                Set a username:
+                <input id="usernameInput" type="text" class="form-control" placeholder="you shouldnt see this text" aria-label="Message" aria-describedby="basic-addon2">
+            </div>
+            <div class="p-5 d-flex flex-wrap justify-content-center" id="roomButtons">
+            </div>
         </div>
     </div>
+
+    <!-- Chat Room body -->
+    <div class="container .col-4 p-2" id="chatRoomBody" style="height: 100%; display: none;">
+        <div class="d-flex align-items-left flex-column bg-slate" style="height: 90%;">
+            <div class="bg-light col" id="welcomeText">
+                Welcome to the chat room!
+            </div>
+            <div id="messageBody" class="align-items-left h-75 overflow-auto p-3">
+            </div>
+            <div class="input-group mb-3 col">
+                <input id="messageBar" type="text" class="form-control" placeholder="Send a Message" aria-label="Message" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick = "sendButton()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Prototype -->
+    <div style="display: none;">
+        <a class="btn btn-primary btn-lg huge" onclick="goToRoom(1)" role="button"> Room 1 </a>
+        <div class="p-3 mb-2 bg-light text-dark rounded">
+            <span class="text-primary">Author</span><span class="text-muted"> 4:20</span>
+            <div>According to all known laws of aviation, there is no way a bee should be able to fly.</div>
+        </div>
+    </div>
+
+    <script src="namesList.js"></script>
+    <script src="chatRoom.js"></script>
 </body>
-<script src="app.js"></script>
 </html>

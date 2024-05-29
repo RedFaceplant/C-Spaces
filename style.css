@@ -11,3 +11,7 @@ a.huge{
 div.bg-slate{
     background-color: slategray;
 }
+
+.hidden{
+    display:none;
+}
