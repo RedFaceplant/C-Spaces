@@ -33,8 +33,11 @@
     <!-- Chat Room body -->
     <div class="container .col-4 p-2" id="chatRoomBody" style="height: 100%; display: none;">
         <div class="d-flex align-items-left flex-column bg-slate" style="height: 90%;">
-            <div class="bg-light col" id="welcomeText">
-                Welcome to the chat room!
+            <div class="bg-light col d-flex justify-content-between">
+                <span id="welcomeText">Welcome to the chat room!</span>
+                <span class="">
+                    <button type="button" class="btn btn-danger" onclick="clearAllMessages()">Clear All Messages</button>
+                </span>
             </div>
             <div id="messageBody" class="align-items-left h-75 overflow-auto p-3">
             </div>

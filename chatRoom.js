@@ -13,6 +13,7 @@ const RoomButtons = document.getElementById("roomButtons")
 const apiUrl = 'http://52.87.246.110/api';
 
 var roomNumber = 3
+var failCount = 0
 var username
 var timer
 
@@ -48,7 +49,7 @@ function goHome(){
     RoomButtons.innerHTML = ""
     for(var j=1; j<=6; j++){
         RoomButtons.innerHTML += `
-        <a class="btn btn-primary btn-lg m-3 huge" onclick="goToRoom(${j})" role="button"> 
+        <a class="btn btn-primary btn-lg m-2 huge" onclick="goToRoom(${j})" role="button"> 
             Room ${j}
         </a>
         `
@@ -113,17 +114,28 @@ function getMessages(){
 }
 
 
+// Removing all messages from a room
+function clearAllMessages(){
+    console.log("yea it works")
+}
+
 // Make a GET request
 async function get(endpoint){
     try{
         const response = await fetch(endpoint, {cache: 'no-cache'});
             if(response.ok){
+                failCount = 0;
               const jsonResponse = await response.json()
               return jsonResponse
             }
     }
     catch(error){
+        failCount += 1;
         console.log(error)
+
+        if(failCount > 3){
+            clearInterval(timer)
+        }
     }
 }
 
