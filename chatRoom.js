@@ -82,15 +82,17 @@ function getRooms(){
 
 // This function runs when the send button is pressed
 function sendButton(){
-    const message = {
-        "author": username,
-        "room_number": roomNumber,
-        "message": MessageBar.value.substring(0,1024),
-        "time": String( (new Date()).getTime() )
-    }
+    if(MessageBar.value){
+        const message = {
+            "author": username,
+            "room_number": roomNumber,
+            "message": MessageBar.value.substring(0,1024),
+            "time": String( (new Date()).getTime() )
+        }
 
-    // Sending a message to the DB
-    sendMessage(String(apiUrl + `/add_message`), message)
+        // Sending a message to the DB
+        sendMessage(String(apiUrl + `/add_message`), message)
+    }
 
     MessageBar.value = ""
 }
@@ -115,8 +117,22 @@ function getMessages(){
 
 
 // Removing all messages from a room
-function clearAllMessages(){
-    console.log("yea it works")
+async function clearAllMessages(){
+    try{
+        const response = await fetch(
+            String(apiUrl + `/clear_messages/${roomNumber}`),
+            {
+                method: "POST",
+            }
+        );
+        if(response.ok){
+            const jsonResponse = await response.json()
+            return jsonResponse
+        }
+    }
+    catch(error){
+        console.log(error)
+    }
 }
 
 // Make a GET request

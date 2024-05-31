@@ -8,7 +8,6 @@ const ADJ = [
     "Fast",
     "Cool",
     "Cold",
-    "Hot",
     "Warm",
     "Wild",
     "Clumsy",
